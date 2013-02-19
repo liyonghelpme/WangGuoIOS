@@ -61,6 +61,7 @@ debug: CCFLAGS += -g3 -O0
 debug: CXXFLAGS += -g3 -O0
 debug: SHAREDLIBS += -L../../../../lib/linux/Debug -lcocos2d -lrt -lz -lcocosdenshion
 debug: SHAREDLIBS += -Wl,-rpath,../../../../../../lib/linux/Debug/
+debug: SHAREDLIBS += -Wl,-rpath,.
 debug: DEFINES += -DDEBUG
 debug: $(TARGET)
 
