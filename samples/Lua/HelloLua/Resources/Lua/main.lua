@@ -17,6 +17,10 @@ local function main()
     print("hello world")
     require "Global.INCLUDE"
     require "views.CastleScene"
+    local function haha(code, data)
+        print(code..","..data)
+    end
+    print("My", MyHttpClient:doGet("http://www.sina.com.cn", haha))
     global.director:runWithScene(CastleScene.new())
 end
 

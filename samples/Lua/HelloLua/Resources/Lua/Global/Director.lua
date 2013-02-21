@@ -13,7 +13,7 @@ function Director:ctor()
     self.disSize = {960, 640}
     self.sceneStack = {}
     self.curScene = nil
-    print("init Director", self.curScene)
+    print("init Director", self.curScene, CCDirector:sharedDirector():getVisibleSize().width)
 end
 
 function Director:pushView(view, dark, autoPop)

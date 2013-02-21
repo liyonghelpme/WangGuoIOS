@@ -6,16 +6,15 @@ function MyNode:ctor()
 end
 function MyNode:init()
     self.bg.myNode = self
-    self.bg:registerScriptHandler(self.onEnterOrExit)
-end
-function MyNode:onEnterOrExit(tag)
-    if tag == kCCNodeOnEnter then
-        self:enterScene()
-    elseif tag == kCCNodeOnExit then
-        self:exitScene()
+    local function onEnterOrExit(tag)
+        if tag == "enter" then
+            self:enterScene()
+        elseif tag == "exit" then
+            self:exitScene()
+        end
     end
+    self.bg:registerScriptHandler(onEnterOrExit)
 end
-
 
 
 
@@ -28,18 +27,19 @@ end
 
 function MyNode:enterScene()
     self.ins = 1
-    print("enterScene", self)
 end
 
 function MyNode:setPos(p)
+    -- print(p.x, p.y)
+    self.bg:setPosition(p)
 end
 
 function MyNode:getPos()
+    return self.bg:getPosition()
 end
 
 function MyNode:exitScene()
     self.ins = 0
-    print("exitScene", self)
 end
 
 function MyNode:addChild(child)

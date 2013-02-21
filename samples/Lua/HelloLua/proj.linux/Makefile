@@ -21,12 +21,15 @@ INCLUDES =  -I../ \
 			-I../../../../CocosDenshion/include \
 			-I../../../../scripting/lua/lua \
 			-I../../../../scripting/lua/tolua \
-			-I../../../../scripting/lua/cocos2dx_support
+			-I../../../../scripting/lua/cocos2dx_support \
+            -I../../../../extensions/
 
 DEFINES = -DLINUX
 
 OBJECTS = ./main.o \
         ../Classes/AppDelegate.o
+include $(COCOS2DX_PATH)/../extensions/proj.linux/network/Makefile
+OBJECTS += $(addprefix ../../../../extensions/proj.linux/network/, $(NETWORK_OBJECTS))
 
 LBITS := $(shell getconf LONG_BIT)
 ifeq ($(LBITS),64)

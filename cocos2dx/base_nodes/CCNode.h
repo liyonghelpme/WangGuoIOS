@@ -1312,6 +1312,7 @@ protected:
     ccGLServerState m_eGLServerState;   ///< OpenGL servier side state
     
     unsigned int m_uOrderOfArrival;     ///< used to preserve sequence while sorting children with the same zOrder
+
     
     CCScheduler *m_pScheduler;          ///< scheduler used to schedule timers and updates
     

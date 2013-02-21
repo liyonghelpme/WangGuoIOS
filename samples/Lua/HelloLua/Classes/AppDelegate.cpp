@@ -3,6 +3,7 @@
 #include "SimpleAudioEngine.h"
 #include "script_support/CCScriptSupport.h"
 #include "CCLuaEngine.h"
+#include "network.h"
 
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -26,7 +27,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCDirector *pDirector = CCDirector::sharedDirector();
     pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
     
-    CCEGLView::sharedOpenGLView()->setDesignResolutionSize(480, 320, kResolutionNoBorder);
+    CCEGLView::sharedOpenGLView()->setDesignResolutionSize(960, 640, kResolutionNoBorder);
 
     // turn on display FPS
     pDirector->setDisplayStats(true);
@@ -37,6 +38,9 @@ bool AppDelegate::applicationDidFinishLaunching()
     // register lua engine
     CCLuaEngine* pEngine = CCLuaEngine::defaultEngine();
     CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
+
+    tolua_liangwei_extension_open(pEngine->getLuaStack()->getLuaState());
+
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CCString* pstrFileContent = CCString::createWithContentsOfFile("Lua/main.lua");

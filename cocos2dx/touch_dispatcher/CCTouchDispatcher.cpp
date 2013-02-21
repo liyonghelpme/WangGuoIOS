@@ -357,7 +357,6 @@ void CCTouchDispatcher::touches(CCSet *pTouches, CCEvent *pEvent, unsigned int u
                 if (uIndex == CCTOUCHBEGAN)
                 {
                     bClaimed = pHandler->getDelegate()->ccTouchBegan(pTouch, pEvent);
-
                     if (bClaimed)
                     {
                         pHandler->getClaimedTouches()->addObject(pTouch);
