@@ -6,6 +6,21 @@
 #include "MyHttpClient.h"
 #include "CCLuaEngine.h"
 #include "CCLuaStack.h"
+#include "cstring"
+void MyHttpClient::doPost(const char*url, int handler, const char*postData)
+{
+    CCLog("doPost %s  %d  %s", url, handler, postData);
+    MyHttpClient *myHttpClient = new MyHttpClient();
+    CCHttpRequest *request = new CCHttpRequest();
+    request->setUrl(url);
+    myHttpClient->m_nHandler = handler;
+    request->setRequestType(CCHttpRequest::kHttpPost);
+    request->setResponseCallback(myHttpClient, callfuncND_selector(MyHttpClient::onHttpRequestCompleted));
+    request->setRequestData(postData, strlen(postData));
+
+    CCHttpClient::getInstance()->send(request);
+    request->release();
+}
 void MyHttpClient::doGet(const char* url,int handler)
 {
 	MyHttpClient *myHttpClient=new MyHttpClient();

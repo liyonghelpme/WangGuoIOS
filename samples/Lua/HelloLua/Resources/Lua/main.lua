@@ -18,9 +18,10 @@ local function main()
     require "Global.INCLUDE"
     require "views.CastleScene"
     local function haha(code, data)
+        print("haha")
         print(code..","..data)
     end
-    print("My", MyHttpClient:doGet("http://www.sina.com.cn", haha))
+    MyHttpClient:doPost("http://192.168.3.103:8100/login", haha, "papayaId=1000&papayaName=中国")
     global.director:runWithScene(CastleScene.new())
 end
 

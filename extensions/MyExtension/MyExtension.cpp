@@ -23,6 +23,31 @@ static int tolua_liangwei_MyHttpClient_doGet00(lua_State* tolua_S)
 			tolua_error(tolua_S,"#ferror in function 'node'.",&tolua_err);
 	return 0;
 }
+static int tolua_liangwei_MyHttpClient_doPost00(lua_State* tolua_S)
+{
+	tolua_Error tolua_err;
+	if (
+			!tolua_isusertable(tolua_S,1,"MyHttpClient",0,&tolua_err) 
+				||	!tolua_isstring(tolua_S,2,0,&tolua_err) 
+				||	!toluafix_isfunction(tolua_S,3, "", 0, &tolua_err) 
+                ||  !tolua_isstring(tolua_S,4,0,&tolua_err)
+				||	!tolua_isnoobj(tolua_S,5,&tolua_err)
+			)
+		goto tolua_lerror;
+	else
+	{
+		const char* url = ((const char*)  tolua_tostring(tolua_S,2,0));
+		int funcID = (toluafix_ref_function(tolua_S,3,0));
+        const char* postData = ((const char*) tolua_tostring(tolua_S,4,0));
+		{
+			MyHttpClient::doPost(url, funcID, postData);
+		}
+	}
+	return 1;
+	tolua_lerror:
+			tolua_error(tolua_S,"#ferror in function 'node'.",&tolua_err);
+	return 0;
+}
 TOLUA_API int tolua_liangwei_extension_open (lua_State* tolua_S)
 {
 	tolua_open(tolua_S);
@@ -33,6 +58,7 @@ TOLUA_API int tolua_liangwei_extension_open (lua_State* tolua_S)
 	tolua_cclass(tolua_S, "MyHttpClient", "MyHttpClient", "CCObject", NULL);
 	tolua_beginmodule(tolua_S,"MyHttpClient");
 	tolua_function(tolua_S,"doGet",tolua_liangwei_MyHttpClient_doGet00);
+    tolua_function(tolua_S,"doPost", tolua_liangwei_MyHttpClient_doPost00);
 	tolua_endmodule(tolua_S);
 	tolua_endmodule(tolua_S);
 	return 1;
