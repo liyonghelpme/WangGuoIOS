@@ -52,3 +52,6 @@ end
 function CastlePage:touchEnded(touches)
     self.touchDelegate:tEnded(self.bg, touches)
 end
+function CastlePage:initDataOver()
+    self.buildLayer:initDataOver()
+end

@@ -17,12 +17,13 @@ local function main()
     print("hello world")
     require "Global.INCLUDE"
     require "views.CastleScene"
-    local function haha(code, data)
+    require "Global.User"
+    local function haha(rid, code, data, param)
         print("haha")
-        print(code..","..data)
+        print(rid, code, data, param)
     end
-    MyHttpClient:doPost("http://192.168.3.103:8100/login", haha, "papayaId=1000&papayaName=中国")
     global.director:runWithScene(CastleScene.new())
+    global.user:initData()
 end
 
 xpcall(main, __G__TRACKBACK__)
