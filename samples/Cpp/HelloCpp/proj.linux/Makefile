@@ -68,6 +68,7 @@ debug: SHAREDLIBS += -L../../../../lib/linux/Debug -lcocos2d -lrt -lz -lcocosden
 debug: SHAREDLIBS += -Wl,-rpath,../../../../../../lib/linux/Debug/
 debug: DEFINES += -DDEBUG -DCOCOS2D_DEBUG=1
 debug: $(TARGET)
+debug: SHAREDLIBS += -Wl,-rpath,./lib
 
 release: BIN_DIR = $(BIN_DIR_ROOT)/release
 release: CCFLAGS += -O3
