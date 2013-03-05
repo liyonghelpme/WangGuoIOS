@@ -170,6 +170,7 @@ BIN_DIR_ROOT=bin
 BIN_DIR = BIN_DIR_ROOT
 
 debug: SHAREDLIBS += -L../../../../lib/linux/Debug -lcocos2d -lrt -lz -lcocosdenshion -Wl,-rpath,../../../../../../lib/linux/Debug
+debug: SHAREDLIBS += -Wl,-rpath,./lib/
 debug: CCFLAGS += -g3 -O0
 debug: CXXFLAGS += -g3 -O0
 debug: DEFINES += -DDEBUG -DCC_ENABLE_CHIPMUNK_INTEGRATION -DCOCOS2D_DEBUG=1

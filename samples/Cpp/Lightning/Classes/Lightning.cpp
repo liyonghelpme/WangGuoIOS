@@ -67,7 +67,7 @@ void Lightning::testLine(float x1, float y1, float x2, float y2)
     s->ignoreAnchorPointForPosition(false);
     CCSize size = s->getContentSize();
     printf("%lf, %lf\n", size.width, size.height);
-    s->setPosition(ccp(32, 64));
+    //s->setPosition(ccp(32, 64));
     //s->setTextureRect(CCRectMake(63, 0, 1, 128));
     //s->setContentSize(CCSizeMake(1, 128));
     //s->setScaleX(20);
@@ -91,7 +91,7 @@ void Lightning::midDisplacement(float x1, float y1, float x2, float y2, float di
         kmVec3Fill(&a, x1, y1, 0);
         kmVec3Fill(&b, x2, y2, 0);
         Line *line = Line::create(this->fileName.c_str(), a, b, thickness);
-        lines->addObject(line);
+        //lines->addObject(line);
         addChild(line);
     }else {
         float midX = (x1+x2)/2;
