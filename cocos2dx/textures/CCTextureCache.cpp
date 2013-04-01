@@ -925,6 +925,18 @@ void VolatileTexture::reloadAllTextures()
             break;
         }
         vt->texture->setTexParameters(&vt->m_texParams);
+/*
+#define GL_NEAREST_MIPMAP_NEAREST 0x2700
+#define GL_LINEAR_MIPMAP_NEAREST 0x2701
+#define GL_NEAREST_MIPMAP_LINEAR 0x2702
+#define GL_LINEAR_MIPMAP_LINEAR 0x2703
+*/
+//http://www.cocos2d-x.org/boards/6/topics/17377
+        if (vt->m_texParams.minFilter == GL_LINEAR_MIPMAP_LINEAR 
+            ||  vt->m_texParams.minFilter == GL_NEAREST_MIPMAP_LINEAR 
+            ||  vt->m_texParams.minFilter == GL_NEAREST_MIPMAP_NEAREST
+            ||  vt->m_texParams.minFilter == GL_LINEAR_MIPMAP_NEAREST
+            || vt->m_texParams.magFilter == GL_LINEAR_MIPMAP_LINEAR ) vt->texture->generateMipmap();
     }
 
     isReloading = false;

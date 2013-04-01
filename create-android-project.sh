@@ -5,8 +5,9 @@
 # Don't modify the script until you know what you do.
 
 # set environment paramters
-NDK_ROOT_LOCAL="/home/laschweinski/android/android-ndk-r5"
-ANDROID_SDK_ROOT_LOCAL="/home/laschweinski/android/android-sdk-linux_86"
+NDK_ROOT_LOCAL="/home/liyong/android-ndk-r7"
+ANDROID_SDK_ROOT_LOCAL="/home/liyong/android-sdk-linux_x86"
+
 
 NEED_BOX2D=false
 NEED_CHIPMUNK=false

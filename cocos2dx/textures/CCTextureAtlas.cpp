@@ -279,6 +279,7 @@ void CCTextureAtlas::setupVBOandVAO()
 #else // CC_TEXTURE_ATLAS_USE_VAO
 void CCTextureAtlas::setupVBO()
 {
+    CCLog("setupVBO");
     glGenBuffers(2, &m_pBuffersVBO[0]);
 
     mapBuffers();
